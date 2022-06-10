@@ -1,0 +1,43 @@
+.room {
+    background: center / cover no-repeat url('../../../public/assets/images/planner-bg.png');
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .header {
+        padding: 10px;
+        height: 10vh;
+    }
+
+    .bottom {
+        display: flex;
+        height: 90vh;
+
+        .message-container {
+            display: flex;
+            flex-direction: column;
+            width: 60%;
+            height: 100%;
+
+            .messages {
+                padding: 10px;
+                height: 75vh;
+            }
+
+            .message-sender {
+                padding: 10px;
+                height: 15vh;
+            }
+
+        }
+
+        .planner {
+            width: 40%;
+            padding: 10px;
+            height: 100%;
+
+        }
+    }
+}

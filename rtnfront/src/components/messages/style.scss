@@ -1,0 +1,66 @@
+.messages-content {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white);
+    border: 1px solid var(--grey);
+    border-radius: var(--radius);
+
+    .top-messages {
+        height: 10%;
+        border-bottom: 1px solid var(--grey);
+        box-shadow: var(--grey) 1px 0px 8px 0px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .actual-user{
+            margin : 0 10px;
+            font-weight: bold;
+        }
+        .actions{
+            margin : 0 10px;
+            button{
+                margin : 0 5px;
+            }
+        }
+    }
+
+    .bottom-messages {
+        height: 90%;
+        max-height: 90%;
+        overflow-y: scroll;
+        margin-bottom: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        .msg{
+            max-width: 70%;
+            &.sent{
+                align-self: flex-end;
+            }
+            &.received{
+                align-self: flex-start;
+            }
+        }
+        &::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        /* Track */
+        &::-webkit-scrollbar-track {
+            height: calc(100% - 16px);
+        }
+
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+            background: #b5b5b5;
+            border-radius: 2px;
+        }
+
+        /* Handle on hover */
+        &::-webkit-scrollbar-thumb:hover {
+            background: #808080;
+        }
+    }
+}

@@ -1,0 +1,13 @@
+.message-sender-content{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--white);
+    border : 1px solid var(--grey);
+    border-radius: var(--radius);
+    button{
+        margin: 5px;
+    }
+}

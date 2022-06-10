@@ -1,0 +1,22 @@
+.message-content{
+    display: flex;
+    align-items: center;
+    .avatar{
+        min-width: 32px;
+        margin : 0 5px;
+        background-color: var(--grey);
+    }
+    .msg-content{
+        padding : 8px;
+        margin: 5px 5px;
+        border-radius: var(--radius);
+        color : var(--white);
+        min-height: 32px;
+        &.received{
+            background-color: var(--grey);
+        }
+        &.sent{
+            background-color: var(--blue);
+        }
+    }
+}

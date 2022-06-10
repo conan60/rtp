@@ -1,0 +1,45 @@
+.front{
+    background: center / cover no-repeat url('../../../public/assets/images/planner-bg.png');
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .content{
+        background-color: var(--white);
+        width: 320px;
+        border: 1px solid var(--grey);
+        padding: 10px;
+        border-radius: var(--radius);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .logo{
+            height: 50px;
+            align-self: flex-start;
+            margin-bottom: 20px;;
+        }
+        .ant-form-item-control{
+            max-width : 100%;
+        }
+        .ant-form-item{
+            margin-bottom: 16px;
+        }
+        #rfs-btn{
+            padding: 0;
+            padding-right: 4px;
+        }
+        .input-lang{
+            margin-bottom: 10px;
+        }
+        .check-box{
+            text-align: center;
+            span{font-size: 12px;}
+        }
+        .submit-button{
+            text-align: right;
+            margin-bottom : 10px;
+        }
+    }
+}

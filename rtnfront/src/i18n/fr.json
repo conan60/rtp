@@ -1,0 +1,22 @@
+{
+    "front.enterUserName": "Merci de saisir le nom d'utilisateur",
+    "front.username": "Nom d'utilisateur",
+    "front.enterRoomNumber": "Merci de saisir le nom de la salle",
+    "front.roomNumber": "Numero du salle",
+    "front.pickLanguage": "Selectionne une langue",
+    "front.createNewRoom": "Créer une nouvelle salle?",
+    "front.createRoom": "Créer une salle",
+    "front.joinRoom": "Rejoindre une salle",
+    "room.logout" : "Déconnexion",
+    "room.message.sender" : "Ecrire votre message",
+    "room.exportCsv" : "Exporter CSV",
+    "room.exportTxt" : "Exporter TXT",
+    "room.addPlan" : "Ajouter une tâche",
+    "room.delete" : "Supprimer",
+    "room.modif" : "Modifier",
+    "modal.add" : "Ajouter",
+    "modal.cancel" : "Annuler",
+    "modal.title" : "Titre",
+    "modal.desc" : "Description",
+    "modal.selectDate" : "Selectionner une date"
+}

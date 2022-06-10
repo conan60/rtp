@@ -1,0 +1,22 @@
+{
+    "front.enterUserName"  : "Please input your username!",
+    "front.username" : "Username",
+    "front.enterRoomNumber":"Please enter the room number!",
+    "front.roomNumber" : "Room number",
+    "front.pickLanguage" : "Select Language",
+    "front.createNewRoom":"Create a new room ?",
+    "front.createRoom":"Create room",
+    "front.joinRoom":"Join room",
+    "room.logout" : "Logout",
+    "room.message.sender" : "Type your message",
+    "room.exportCsv" : "Export CSV",
+    "room.exportTxt" : "Export TXT",
+    "room.addPlan" : "Add new task",
+    "room.delete" : "Delete",
+    "room.modif" : "Modify",
+    "modal.add" : "Add",
+    "modal.cancel" : "Cancel",
+    "modal.title" : "Title",
+    "modal.desc" : "Description",
+    "modal.selectDate" : "Select date"
+}

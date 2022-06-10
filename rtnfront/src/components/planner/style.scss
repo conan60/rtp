@@ -1,0 +1,87 @@
+.planner-content {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white);
+    border: 1px solid var(--grey);
+    border-radius: var(--radius);
+
+    .top-planner {
+        height: 8%;
+        border-bottom: 1px solid var(--grey);
+        box-shadow: var(--grey) 1px 0px 8px 0px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        .actions {
+            margin: 0 20px;
+
+            button {
+                margin: 0 5px;
+            }
+        }
+    }
+
+    .bottom-planner {
+        padding : 10px;
+        height: 92%;
+        max-height: 92%;
+        overflow-y: scroll;
+        margin-bottom: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+
+        .plan {
+            max-width: 70%;
+            align-self: flex-start;
+        }
+
+        .add-plan {
+            position: absolute;
+            bottom: 50px;
+            right: 50px;
+            z-index: 100;
+        }
+
+
+        &::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        /* Track */
+        &::-webkit-scrollbar-track {
+            height: calc(100% - 16px);
+        }
+
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+            background: #b5b5b5;
+            border-radius: 2px;
+        }
+
+        /* Handle on hover */
+        &::-webkit-scrollbar-thumb:hover {
+            background: #808080;
+        }
+    }
+}
+
+.ant-modal-content {
+    border-radius: var(--radius) !important;
+    overflow: hidden;
+    .ant-modal-body {
+        &>div.ant-picker {
+            width: 100%;
+        }
+
+        input,
+        textarea {
+            margin-bottom: 10px;
+        }
+
+    }
+
+}

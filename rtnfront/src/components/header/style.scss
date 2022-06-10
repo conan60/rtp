@@ -1,0 +1,17 @@
+.header-content{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--white);
+    border : 1px solid var(--grey);
+    border-radius: var(--radius);
+    img{
+        height: 100%;
+        margin-left: 10px;
+    }
+    button{
+        margin-right: 25px;
+    }
+}
