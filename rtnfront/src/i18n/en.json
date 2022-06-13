@@ -7,6 +7,7 @@
     "front.createNewRoom":"Create a new room ?",
     "front.createRoom":"Create room",
     "front.joinRoom":"Join room",
+    "room.room" : "Room number",
     "room.logout" : "Logout",
     "room.message.sender" : "Type your message",
     "room.exportCsv" : "Export CSV",

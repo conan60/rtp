@@ -1,15 +1,17 @@
-import React, { Dispatch, FC, SetStateAction, useState } from 'react'
+import React, { FC, useState } from 'react'
 import { Socket } from 'socket.io-client'
-import { Form, Checkbox, Button, Input } from 'antd';
-import ReactFlagsSelect from 'react-flags-select';
-import { injectIntl,IntlShape } from 'react-intl';
+import { Form, Checkbox, Button, Input } from 'antd'
+import ReactFlagsSelect from 'react-flags-select'
+import { injectIntl,IntlShape } from 'react-intl'
+import { useDispatch } from 'react-redux'
+import { setMe } from '../../redux/slices/roomSlice'
+import constants from '../../constants'
 
 import './style.scss'
 
 interface FrontProps {
     socket: Socket;
     setLang: (lang: string) => void;
-    setLogged : Dispatch<SetStateAction<boolean>>
     language: string;
     intl : IntlShape
 }
@@ -21,16 +23,24 @@ interface DataConnection {
 }
 
 const Index: FC<FrontProps > = (props: FrontProps): JSX.Element => {
-    const { setLang,setLogged, socket, language, intl } = props
+    const dispatch = useDispatch()
+    const { setLang, socket, language, intl } = props
     const [checked, setChecked] = useState<boolean>(false)
     const onSubmit = (data : DataConnection) : void=>{
-        socket.emit('onConnect', {
-            type: 'request',
-            username: data.username,
-            action: checked ? 'create' : 'join',
-            roomid: data.roomid,
-          });
+        dispatch(setMe(data.username))
+        if( data.roomid){
+            socket.emit(constants.JOIN_ROOM, {
+                name: data.username,
+                roomid : data.roomid
+              });
+        }else{
+            socket.emit(constants.CREATE_ROOM, {
+                name: data.username,
+              });
+        }
+        
     }
+
     return (
         <div className='front'>
             <div className='content'>
@@ -135,7 +145,7 @@ const Index: FC<FrontProps > = (props: FrontProps): JSX.Element => {
                         </Checkbox>
                     </Form.Item>
                     <Form.Item className='submit-button'>
-                        <Button onClick={()=>setLogged((log:boolean)=>!log)} type='primary' htmlType='submit' size='small' shape="round">
+                        <Button type='primary' htmlType='submit' size='small' shape="round">
                             {checked
                                 ? intl.formatMessage({ id: 'front.createRoom' })
                                 : intl.formatMessage({ id: 'front.joinRoom' })}

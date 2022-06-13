@@ -8,7 +8,7 @@ import './style.scss'
 
 const Index: FC<MessageProps> = (props): JSX.Element => {
     const { type, name, message, date } = props
-    const timeArray = date.toTimeString().split(':')
+    const timeArray = new Date(date).toTimeString().split(':')
     const time = `${timeArray[0]}:${timeArray[1]}`
     return (
         <div className={`msg ${type} message-content`}>

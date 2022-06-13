@@ -3,6 +3,9 @@ import { Button, Tooltip } from 'antd'
 import { VideoCameraOutlined, PhoneOutlined, TeamOutlined } from '@ant-design/icons'
 import { injectIntl, IntlShape } from 'react-intl'
 import { Socket } from 'socket.io-client'
+import { useSelector } from 'react-redux'
+import { roomSelector,userSelector } from '../../redux/selectors/roomSelector'
+import { messageSelector } from '../../redux/selectors/messageSelector'
 import Messge from '../message'
 
 import './style.scss'
@@ -18,7 +21,6 @@ interface RoomProps {
   socket: Socket;
   intl: IntlShape;
   users?: string[];
-  actualUser?: string;
   messages?: MessageProps[]
 }
 
@@ -29,19 +31,19 @@ const Index: FC<RoomProps> = (props): JSX.Element => {
   const {
     socket,
     intl,
-    users = ['Malek', 'Mohamed', 'Gorchene'],
-    actualUser = 'Camille',
-    messages = [{ date, name : 'Malek', type : 'sent',message : 'Hello Hello Hello Hello Hello Hello Hello HelloHello Hello Hello HelloHello Hello Hello Hello Hello Hello Hello HelloHello Hello Hello HelloHello Hello Hello HelloHello Hello Hello HelloHello Hello Hello Hello'},{ date, name : 'Malek', type : 'received',message : 'Hello'},{ date, name : 'Malek', type : 'received',message : 'Hello'},{ date, name : 'Malek', type : 'received',message : 'Hello'},{ date, name : 'Malek', type : 'received',message : 'Hello Hello Hello Hello Hello Hello Hello HelloHello Hello Hello HelloHello Hello Hello Hello Hello Hello Hello HelloHello Hello Hello HelloHello Hello Hello HelloHello Hello Hello HelloHello Hello Hello Hello'},{ date, name : 'Malek', type : 'received',message : 'Hello Hello Hello Hello Hello Hello Hello HelloHello Hello Hello HelloHello Hello Hello Hello Hello Hello Hello HelloHello Hello Hello HelloHello Hello Hello HelloHello Hello Hello HelloHello Hello Hello Hello'},{ date, name : 'Malek', type : 'received',message : 'Hello Hello Hello Hello Hello Hello Hello HelloHello Hello Hello HelloHello Hello Hello Hello Hello Hello Hello HelloHello Hello Hello HelloHello Hello Hello HelloHello Hello Hello HelloHello Hello Hello Hello'},{ date, name : 'Malek', type : 'received',message : 'Hello'},{ date, name : 'Malek', type : 'sent',message : 'Hello'},{ date, name : 'Malek', type : 'received',message : 'Hello'},{ date, name : 'Malek', type : 'received',message : 'Hello'},{ date, name : 'Malek', type : 'sent',message : 'Hello'}]
   } = props
-  const messagesRender = messages.map((el,index)=><Messge key={index} {...el}/>)
+  const room = useSelector(roomSelector)
+  const me = useSelector(userSelector)
+  const messages = useSelector(messageSelector)
+  const messagesRender = messages.map((el,index)=><Messge key={el.date.toString() as string} {...el} type={el.name===me?'sent': 'received'}/>)
 return (
   <div className='messages-content'>
     <div className='top-messages'>
-      <p className='actual-user'>{actualUser}</p>
+      <p className='actual-user'>{intl.formatMessage({ id: 'room.room' })} : {room[0].room}</p>
       <div className='actions'>
         <Button shape="circle" icon={<VideoCameraOutlined />} type='primary' />
         <Button shape="circle" icon={<PhoneOutlined />} type='primary' />
-        <Tooltip title={users.map(el => <p>{el}</p>)}>
+        <Tooltip title={room.filter(el=>el.name!==me).map(el => <p>{el.name}</p>)}>
           <Button shape="circle" icon={<TeamOutlined />} />
         </Tooltip>
       </div>
