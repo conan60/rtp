@@ -19,12 +19,13 @@ interface RoomProps {
 const Index : FC<RoomProps> = (props) : JSX.Element =>{
   const {socket,intl} = props
   const room = useSelector(roomSelector)
-  const [message, setMessages] = useState<string>('')
+  const [message, setMessage] = useState<string>('')
   const sendMessage = ()=>{
     socket.emit(constants.SEND_MESSAGE,{message,room : room[0].room})
+    setMessage('')
   }
   const changeHandler = (e : React.ChangeEvent<HTMLTextAreaElement>)=>{
-    setMessages(e.target.value)
+    setMessage(e.target.value)
   }
   return (
     <div className='message-sender-content'>

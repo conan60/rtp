@@ -1,3 +1,3 @@
 import { RootState } from '../store'
 
-export const taskSelector = (state : RootState)=>state.messages.value
+export const taskSelector = (state : RootState)=>state.tasks.value

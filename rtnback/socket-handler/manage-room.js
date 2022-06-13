@@ -8,7 +8,6 @@ let rooms = {}
 const createRoom = {
     action: constants.CREATE_ROOM,
     handler: (socket) => (data) => {
-        console.log(data)
         const roomid = uuid()
         rooms = { ...rooms, [roomid]: { [socket.id]: data.name } }
         socket.join(roomid)

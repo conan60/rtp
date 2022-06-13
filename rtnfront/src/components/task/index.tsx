@@ -20,19 +20,19 @@ const Index: FC<TaskProps> = (props): JSX.Element => {
             <div className="task-resume">
                 <div className="title-date">
                     <p className='title'>{title}</p>
-                    <p className='date'>{date.toDateString()}</p>
+                    <p className='date'>{new Date(date!.toString()).toDateString()}</p>
                 </div>
                 <div className="desc">
-                    <p>"{description.slice(50)}..."</p>
+                    <p>"{description.slice(0,50)}..."</p>
                 </div>
             </div>
             <div className="task-actions">
                 <Tooltip title={intl.formatMessage({ id: 'room.delete' })}>
                     <Button shape="circle" icon={<DeleteOutlined />} danger />
                 </Tooltip>
-                <Tooltip title={intl.formatMessage({ id: 'room.modif' })}>
+                {/* <Tooltip title={intl.formatMessage({ id: 'room.modif' })}>
                     <Button shape="circle" icon={<EditOutlined />} />
-                </Tooltip>
+                </Tooltip> */}
             </div>
         </div>
     )
