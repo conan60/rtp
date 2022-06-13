@@ -6,6 +6,9 @@ const morgan = require('morgan')
 var path = require('path')
 var fs = require('fs')
 const { Server } = require("socket.io")
+const {createRoom,joinRoom } = require('./socket-handler/manage-room')
+const {sendMessage } = require('./socket-handler/manage-messages')
+
 
 
 
@@ -30,10 +33,14 @@ app.use(express.json())
 
 //Client connexion to websocket
 io.on('connection', (socket) => {
-    console.log('User Connect')
+    socket.on(createRoom.action,createRoom.handler(socket))
+    socket.on(joinRoom.action,joinRoom.handler(socket,io.sockets))
+    socket.on(sendMessage.action,sendMessage.handler(socket,io.sockets))
+
+
     socket.on('disconnect', () => {
         console.log('user disconnected');
-      });
+    });
 });
 
 
