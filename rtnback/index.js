@@ -8,6 +8,7 @@ var fs = require('fs')
 const { Server } = require("socket.io")
 const {createRoom,joinRoom } = require('./socket-handler/manage-room')
 const {sendMessage } = require('./socket-handler/manage-messages')
+const {sendTask } = require('./socket-handler/manage-task')
 
 
 
@@ -36,7 +37,7 @@ io.on('connection', (socket) => {
     socket.on(createRoom.action,createRoom.handler(socket))
     socket.on(joinRoom.action,joinRoom.handler(socket,io.sockets))
     socket.on(sendMessage.action,sendMessage.handler(socket,io.sockets))
-
+    socket.on(sendTask.action,sendTask.handler(socket,io.sockets))
 
     socket.on('disconnect', () => {
         console.log('user disconnected');

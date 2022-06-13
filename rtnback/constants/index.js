@@ -5,5 +5,7 @@ module.exports = {
     ROOM_JOINED : 'room-joined',
     EXIT_ROOM : 'exit-room',
     SEND_MESSAGE : 'send-message',
-    RECEIVE_MESSAGE : 'receive-message'
+    RECEIVE_MESSAGE : 'receive-message',
+    SEND_TASK : 'send-task',
+    RECEIVE_TASK : 'receive-task'
 }

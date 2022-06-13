@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import roomSlice from './slices/roomSlice'
 import messageSlice from './slices/messageSlice'
+import taskSlice from './slices/taskSlice'
 
 export const store = configureStore({
   reducer: {
       room : roomSlice,
-      messages : messageSlice 
+      messages : messageSlice ,
+      tasks : taskSlice
   },
 })
 

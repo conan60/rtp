@@ -3,12 +3,12 @@ const {getRooms} = require('./manage-room')
 
 
 
-const sendMessage = {
-    action: constants.SEND_MESSAGE,
+const sendTask = {
+    action: constants.SEND_TASK,
     handler: (socket,sockets) => (data) => {
         const rooms = getRooms()
         const name = rooms[data.room][socket.id]
-        sockets.in(data.room).emit(constants.RECEIVE_MESSAGE, { message : data.message,date : new Date(), name})
+        sockets.in(data.room).emit(constants.RECEIVE_TASK, { title : data.title,date : new Date(data.date), description : data.description})
     }
 }
 
@@ -16,5 +16,5 @@ const sendMessage = {
 
 
 module.exports = {
-    sendMessage
+    sendTask
 }
